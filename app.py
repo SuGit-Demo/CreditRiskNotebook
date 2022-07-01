@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify, render_template
 #import pickle
 import requests
 
+from keras.models import load_model
+
 app = Flask(__name__)
 model = load_model('creditrisk.h5') 
 #model = pickle.load(open('creditrisk.h5'))
