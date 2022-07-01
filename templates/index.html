@@ -1,21 +1,6 @@
-<script>
-  window.watsonAssistantChatOptions = {
-      integrationID: "f6a4eee7-945e-4e8a-97ab-60b830671fa2", // The ID of this integration.
-      region: "us-south", // The region your integration is hosted in.
-      serviceInstanceID: "67c9f3f5-3350-4d8b-b6ea-15d2c487050c", // The ID of your service instance.
-      onLoad: function(instance) { instance.render(); }
-    };
-  setTimeout(function(){
-    const t=document.createElement('script');
-    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js"
-    document.head.appendChild(t);
-  });
-</script>
-
-
 <html >
 <head>  
-  <title>AutoAI Flask Deployment Tutorial</title>
+  <title>Jupyter Notebook Credit Risk Model and Flask Deployment Tutorial</title>
 </head>
 
 <body>
@@ -24,9 +9,12 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="duration" placeholder="Enter Duration" required="required" /> </br> </br>
-        <input type="text" name="amount" placeholder="Enter Amount" required="required" /> </br> </br>
-	<input type="text" name="age" placeholder="Enter Age" required="required" /> </br> </br>
+    	<input type="text" name="gender" placeholder="Enter Gender (Male/Female)" required="required" /> </br> </br>
+        <input type="text" name="mstatus" placeholder="Enter Marital Status (Married/Single)" required="required" /> </br> </br>
+	<input type="text" name="appincome" placeholder="Enter Applicant Income" required="required" /> </br> </br>
+	<input type="text" name="coincome" placeholder="Enter Co-Applicant Income" required="required" /> </br> </br>
+	<input type="text" name="amount" placeholder="Enter Loan Amount" required="required" /> </br> </br>
+	<input type="text" name="duration" placeholder="Enter Loan Duration (in years)" required="required" /> </br> </br>
         <button type="submit"> Predict Risk </button>
     </form>
 
