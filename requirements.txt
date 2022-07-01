@@ -1,4 +1,5 @@
 Flask
 gunicorn
 requests
-tensorflow-cpu
+pickleshare
+sklearn
