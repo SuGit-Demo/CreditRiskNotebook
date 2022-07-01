@@ -4,7 +4,8 @@ import pickle
 import requests
 
 app = Flask(__name__)
-model = pickle.load(open('creditrisk.h5'))
+model = load_model('creditrisk.h5') 
+#model = pickle.load(open('creditrisk.h5'))
 
 @app.route('/')
 def home():
