@@ -1,14 +1,14 @@
 from flask import Flask, request, jsonify, render_template
 #import numpy as np
-#import pickle
+import pickle
 import requests
 import os
 
 from keras.models import load_model
 
 app = Flask(__name__)
-model = load_model('creditrisk.h5') 
-#model = pickle.load(open('creditrisk.h5'))
+#model = load_model('creditrisk.h5') 
+model = pickle.load(open('creditrisk.h5','rb'))
 
 @app.route('/')
 def home():
