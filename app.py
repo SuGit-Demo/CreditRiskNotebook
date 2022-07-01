@@ -52,7 +52,7 @@ def predict():
     print(txt)
     
 
-    return render_template('index.html', prediction_text='Loan Risk Prediction is $ {}'.format(response_scoring.json()))
+    return render_template('index.html', prediction_text='Loan Risk Prediction is $txt')
 
 @app.route('/results',methods=['POST'])
 def results():
