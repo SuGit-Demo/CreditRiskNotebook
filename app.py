@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 import numpy as np
-#import pickle
+import pickle
 import requests
 
 app = Flask(__name__)
+model = pickle.load(open('creditrisk.h5'))
 
 @app.route('/')
 def home():
@@ -26,8 +27,30 @@ def predict():
     LoanAmount = request.form.get('amount')
     LoanDuration = request.form.get('duration')              
    
+    ##Test model prediction with static data. Reshape to change to 2D array 
+    testdata = np.reshape([
+    Gender,
+    MStatus, #Married. Change to 0 to get No Risk. Chane to 1 to get Risk
+    None,
+    None,
+    None,
+    Appincome,
+    Coincome,
+    LoanAmount,
+    LoanDuration,
+    None,
+    None,
+    None
+    ],(1, -1))
+
+    pred_result = model.predict(testdata)
+
+    if(pred_result[0]==0):
+        txt = 'No Risk Loan'
+    else:
+        txt = 'Risky Loan'
+    print(txt)
     
-    ####################### END OF AUTOAI DEPLOYMENT API #######################
 
     return render_template('index.html', prediction_text='Loan Risk Prediction is $ {}'.format(response_scoring.json()))
 
