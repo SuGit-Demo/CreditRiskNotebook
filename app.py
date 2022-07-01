@@ -1,10 +1,7 @@
 from flask import Flask, request, jsonify, render_template
-#import numpy as np
+import numpy as np
 import pickle
 import requests
-import os
-
-from keras.models import load_model
 
 app = Flask(__name__)
 #model = load_model('creditrisk.h5') 
