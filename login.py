@@ -1,5 +1,5 @@
 def checkLogin(user, pwd):
-  pip install ibm_db
+  #pip install ibm_db
 
   import ibm_db
 
