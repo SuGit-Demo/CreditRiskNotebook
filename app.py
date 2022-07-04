@@ -9,7 +9,13 @@ model = pickle.load(open('creditrisk.h5','rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('login.html')
+
+@app.route('/login')
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    
 
 @app.route('/predict',methods=['POST'])
 def predict():
