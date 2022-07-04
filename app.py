@@ -15,7 +15,11 @@ def home():
 def login():
     username = request.form.get('username')
     password = request.form.get('password')
-    
+    isTrue = login.checkLogin(username,password)    
+    if(isTrue==1):
+        return render_template('index.html')
+    else:
+        return redirect(url_for('home'))
 
 @app.route('/predict',methods=['POST'])
 def predict():
