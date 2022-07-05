@@ -109,18 +109,7 @@ def predict():
         txt = 'Risky Loan'
     print(txt)
     
-
-    return render_template('index.html', prediction_text='Loan Risk Prediction is $ {}'.format(txt))
-
-@app.route('/results',methods=['POST'])
-def results():
-
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
-    return jsonify(output)
+    return render_template('index.html', prediction_text='Loan Risk Prediction is: {}'.format(txt))
 
 if __name__ == "__main__":
-    #app.run(host='0.0.0.0', port=8080)
     app.run()
