@@ -59,11 +59,13 @@ def login():
     
     #isTrue = login.checkLogin(username,password)    
     
-    print("Output is "+ output )
+    print("Output is "+ str(output) )
     
     if output:
+        print("Correct")
         return render_template('index.html')
     else:
+        print("Wrong")
         return redirect(url_for('home'))
 
 @app.route('/predict',methods=['POST'])
