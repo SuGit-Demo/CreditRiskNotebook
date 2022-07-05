@@ -1,12 +1,10 @@
 from flask import Flask, request, jsonify, url_for, redirect, render_template
-from flask_db2 import DB2 #for DB2 connection
 import numpy as np
 import pickle
 import requests
 import ibm_db
 
 app = Flask(__name__)
-import login #call login.py
 model = pickle.load(open('creditrisk.h5','rb'))
 
 @app.route('/')
@@ -44,28 +42,25 @@ def login():
         print ("Connected to database: ", dsn_database, "as user: ", dsn_uid, "on host: ", dsn_hostname)        
     except:
         print ("no connection:", ibm_db.conn_errormsg())
-
-    #query_str = f"select * from VJD81886.CUSTOMER where COLUMN_0 = '{input_fruit}'"
+    
     query_str = f"select * from VJD81886.CUSTOMER where Username = '{username}' and Password = '{password}'"
     selectQuery = query_str
     
-    print(username + " " + password )
+    print(username + " " + password ) #debug
     
     #Execute the statement
     selectStmt = ibm_db.exec_immediate(conn, selectQuery)
     
     #Fetch the Dictionary (for the first row only) - replace ... with your code
-    output = ibm_db.fetch_tuple(selectStmt)    
+    output = ibm_db.fetch_tuple(selectStmt)        
     
-    #isTrue = login.checkLogin(username,password)    
-    
-    print("Output is "+ str(output) )
+    print("Output is "+ str(output) ) #debug
     
     if output:
-        print("Correct")
+        print("Correct") #debug
         return render_template('index.html')
     else:
-        print("Wrong")
+        print("Wrong") #debug
         return redirect(url_for('home'))
 
 @app.route('/predict',methods=['POST'])
