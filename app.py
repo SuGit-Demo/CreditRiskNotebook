@@ -54,9 +54,9 @@ def login():
     #Fetch the Dictionary (for the first row only) - replace ... with your code
     output = ibm_db.fetch_tuple(selectStmt)    
     
-    isTrue = login.checkLogin(username,password)    
+    #isTrue = login.checkLogin(username,password)    
     
-    if(isTrue==1):
+    if output:
         return render_template('index.html')
     else:
         return redirect(url_for('home'))
