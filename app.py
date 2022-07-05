@@ -12,7 +12,7 @@ model = pickle.load(open('creditrisk.h5','rb'))
 def home():
     return render_template('login.html')
 
-@app.route('/login')
+@app.route('/login',methods=['POST'])
 def login():
     username = request.form.get('username')
     password = request.form.get('password')
