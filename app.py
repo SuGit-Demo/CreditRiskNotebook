@@ -49,6 +49,8 @@ def login():
     query_str = f"select * from VJD81886.CUSTOMER where Username = '{username}' and Password = '{password}'"
     selectQuery = query_str
     
+    print(username + " " + password )
+    
     #Execute the statement
     selectStmt = ibm_db.exec_immediate(conn, selectQuery)
     
@@ -56,6 +58,8 @@ def login():
     output = ibm_db.fetch_tuple(selectStmt)    
     
     #isTrue = login.checkLogin(username,password)    
+    
+    print("Output is "+ output )
     
     if output:
         return render_template('index.html')
