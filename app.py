@@ -3,6 +3,7 @@ from flask_db2 import DB2 #for DB2 connection
 import numpy as np
 import pickle
 import requests
+import ibm_db
 
 app = Flask(__name__)
 import login #call login.py
